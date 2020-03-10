@@ -18,6 +18,7 @@ func TestScalableHistogram(t *testing.T) {
 	require.NoError(t, err)
 
 	ticker := time.NewTicker(500 * time.Millisecond)
+	defer ticker.Stop()
 	<-ticker.C
 	sh.StartAt(time.Now())
 	<-ticker.C
