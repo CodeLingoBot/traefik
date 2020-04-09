@@ -46,7 +46,7 @@ func (p *Proxy) ServeUDP(conn *Conn) {
 	<-errChan
 }
 
-func (p Proxy) connCopy(dst io.WriteCloser, src io.Reader, errCh chan error) {
+func (p Proxy) connCopy(dst io.WriteCloser, src io.Reader, errCh chan<- error) {
 	_, err := io.Copy(dst, src)
 	errCh <- err
 

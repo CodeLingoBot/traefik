@@ -52,7 +52,7 @@ func (p *Proxy) ServeTCP(conn WriteCloser) {
 	<-errChan
 }
 
-func (p Proxy) connCopy(dst, src WriteCloser, errCh chan error) {
+func (p Proxy) connCopy(dst, src WriteCloser, errCh chan<- error) {
 	_, err := io.Copy(dst, src)
 	errCh <- err
 
